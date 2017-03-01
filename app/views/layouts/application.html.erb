@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instafood</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid navbar-container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header pull-left">
+          <%= link_to "Instafood", root_path, class:"navbar-brand" %>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to '<i class="fa fa-plus-square-o"></i>'.html_safe, new_post_path %></li>
+            <li><%= link_to '<i class="fa fa-sign-out"></i>'.html_safe, destroy_user_session_path, method: :delete %></li>
+            <li class="hidden-xs"><%= link_to (current_user.user_name), edit_user_registration_path %></li>
+            <li class="visible-xs"><%= link_to '<i class="fa fa-user-circle-o"></i>'.html_safe, edit_user_registration_path %></li>
+          <% else %>
+            <li><%= link_to '<i class="fa fa-sign-in"></i>'.html_safe, new_user_session_path %></li>
+            <li><%= link_to '<i class="fa fa-user-plus"></i>'.html_safe, new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div><!-- /.container-fluid -->
+    </nav>
+    <%= yield %>
+  </body>
+</html>

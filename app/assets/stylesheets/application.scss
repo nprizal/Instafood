@@ -1,0 +1,412 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Baloo+Bhaina|Baloo+Paaji');
+
+// COLOR VARIABLES
+$border: #dbdbdb;
+$bg: #fff;
+$text: #262626;
+$accent: #5e3e1f;
+$link: #439df3;
+$txt-fade: #C7C7CD;
+// -----------------
+
+body {
+  background-color: #fafafa;
+  color: $text;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  background-image: image-url('background.jpg');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  @media screen and (max-width: 768px) {
+    background-image: none;
+    background-color: white;
+  }
+}
+
+a {
+  color: $link;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover, &:visited {
+    color: $link;
+    text-decoration: none;
+  }
+}
+
+.row {
+  width: 100%;
+}
+
+a.link-fade {
+  color: $txt-fade !important;
+  &:hover {
+    color: $txt-fade !important;
+  }
+}
+
+a.red {
+  color: red !important;
+  &:hover {
+    color: red !important;
+  }
+}
+
+.btn-default {
+  background-color: transparent;
+  border: none;
+  color: $accent;
+  &:hover, &:visited, &:focus, &:active {
+    background-color: transparent;
+    border: none;
+    color: $accent;
+  }
+}
+
+.text-left-xs {
+  @media screen and (max-width: 768px) {
+    text-align: left !important;
+  }
+}
+
+.brand {
+  font-family: 'Baloo Paaji', cursive;
+  color: $accent;
+}
+
+.btn-color {
+  background-color: $accent;
+  border: 1px solid $accent !important;
+  color: #fff;
+  &:hover, &:visited, &:focus {
+    background-color: $accent;
+    border: 1px solid $accent;
+    color: #fff;
+  }
+}
+
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-right {
+  float: right!important;
+}
+
+.navbar-default {
+  background-color: $bg;
+  border-radius: 0px;
+  border-bottom: 1px solid $border;
+  padding: 10px 0px;
+  margin-bottom: 0;
+  z-index: 100;
+  .navbar-container {
+    max-width: 70%;
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    background-color: $accent;
+    background-image: image-url('background.jpg');
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .navbar-nav > li > a {
+    color: $accent;
+    font-size: 24px;
+    &:hover {
+      color: $accent;
+    }
+    @media screen and (max-width: 768px) {
+      color: #fff;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .navbar-brand {
+    color: $accent;
+    font-size: 36px;
+    font-family: 'Baloo Paaji', cursive;
+    vertical-align: middle;
+    &:hover {
+      color: $accent;
+    }
+    @media screen and (max-width: 768px) {
+      color: #fff;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding-top: 160px;
+  @media screen and (max-width: 768px) {
+    padding-top: 80px;
+  }
+}
+
+.wrapper-small {
+  max-width: 400px;
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+  }
+}
+
+.frame {
+  background-color: $bg;
+  border: 1px solid $border;
+  margin-bottom: 60px;
+  border-radius: 3px;
+  box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  @media screen and (max-width: 768px) {
+    border-radius: 0;
+    border: none;
+    margin-bottom: 20px;
+  }
+}
+
+.post-header {
+  padding: 20px;
+}
+
+.post-image {
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
+  img {
+    width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    border: none;
+  }
+}
+
+.post-body {
+  padding: 20px;
+}
+
+.description {
+  color: $txt-fade;
+  padding-bottom: 10px;
+  .icon {
+    float: left;
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+  }
+  div {
+    padding: 0;
+  }
+  a {
+    color: $txt-fade;
+    text-decoration: underline;
+    &:hover {
+      color: $accent;
+    }
+  }
+}
+
+.field {
+  margin: 10px auto;
+  input {
+    border-radius: 3px;
+    border: 1px solid $border;
+    padding: 5px;
+    width: 80%;
+  }
+}
+
+.form {
+  padding: 40px;
+  @media screen and (max-width: 768px) {
+    padding: 60px 10px 20px;
+    .header {
+      font-size: 2em;
+    }
+  }
+  .header {
+    margin-bottom: 30px;
+  }
+}
+
+.form.sub {
+  padding: 20px;
+}
+
+.form-file {
+  padding: 20px 0;
+}
+
+.form-description {
+  color: $txt-fade;
+  margin: 20px auto;
+  .icon {
+    width: 30px;
+    text-align: center;
+  }
+  div {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  input, textarea {
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid $border;
+    color: $text;
+  }
+}
+
+.user-name {
+  font-weight: 500;
+  color: $accent;
+}
+
+.delete-button {
+  float:right;
+}
+
+.comment-form {
+  ul {
+    margin-bottom: 0;
+  }
+  button {
+
+  }
+  @media screen and (max-width: 768px) {
+    div {
+          padding: 0;
+    }
+  }
+}
+
+.like-button {
+  text-align: center;
+  color: $txt-fade;
+}
+
+.comment-field  {
+  input {
+    border: none;
+    outline: none;
+  }
+}
+
+.modal {
+  text-align: center;
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    margin-right: -4px;
+    vertical-align: middle;
+  }
+  .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align:middle;
+    width: 300px;
+    .modal-content {
+      font-weight: 500;
+      border: 1px solid $border;
+      border-radius: 3px;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      ul {
+        margin: 0;
+      }
+      li {
+        margin: 15px 0;
+        a {
+          color: $accent;
+        }
+      }
+    }
+  }
+}
+
+.edit_post {
+  input {
+    border: none ;
+    border-bottom: 1px solid $border;
+    width: 80%;
+    margin-bottom: 15px;
+    color: $text;
+  }
+  .edit-description {
+    width: 50%;
+  }
+  .btn-default {
+    color: $txt-fade;
+  }
+}
+
+.edit_user {
+  div {
+    margin: 10px auto;
+  }
+
+  input {
+    border-radius: 3px;
+    border: 1px solid $border;
+    padding: 5px;
+    width: 100%;
+  }
+  .actions {
+    margin-top: 30px;
+    input {
+      width: auto;
+      padding: 6px 12px;
+    }
+  }
+}
+
+// devise error message
+#error_explanation {
+  color: red;
+  h2 {
+    font-size: 1em;
+  }
+  ul {
+    font-size: 12px;
+    text-align: left;
+  }
+}

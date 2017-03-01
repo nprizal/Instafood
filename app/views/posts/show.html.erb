@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="frame">
+    <div class="post-header">
+      <div class="user-name">
+        <%= @post.user.user_name %>
+      </div>
+    </div>
+    <div class="post-image">
+      <%= image_tag @post.image.url %>
+    </div>
+    <div class="post-body">
+      <div class="caption">
+        <span class="user-name"><%= @post.user.user_name + ' ' %></span><%= @post.caption %>
+        <ul class="list-inline link-fade delete-button">
+          <% if @post.user.id == current_user.id %>
+            <li><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_post_path(@post) %></li>
+            <li><%= link_to '<i class="fa fa-trash"></i>'.html_safe, @post, method: :delete %></li>
+            <li><%= link_to '<i class="fa fa-ban"></i>'.html_safe, root_path %></li>
+          <% end %>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

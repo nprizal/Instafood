@@ -1,0 +1,105 @@
+<div class="wrapper">
+<% @posts.each do |post| %>
+  <div class="frame" id="post_<%= post.id %>">
+    <div class="post-header">
+      <div class="user-name">
+        <%= post.user.user_name %>
+      </div>
+    </div>
+    <div class="post-image">
+      <%= image_tag post.image.url %>
+    </div>
+    <div class="post-body">
+      <% if post.restaurant || post.location || post.menu || post.price %>
+        <div class="description">
+          <% if post.restaurant %>
+            <div>
+              <div class="icon"><%= fa_icon 'map-marker'%></div>
+              <a href="https://www.google.co.jp/#q=<%= post.restaurant %>" target="blank"><%= post.restaurant %></a>
+            </div>
+          <% end %>
+          <% if post.location %>
+            <div>
+              <div class="icon"><%= fa_icon 'globe'%></div>
+              <%= link_to post.location, '#', target: 'blank' %>
+            </div>
+          <% end %>
+          <% if post.menu %>
+            <div>
+              <div class="icon"><%= fa_icon 'cutlery'%></div>
+              <%= post.menu %>
+            </div>
+          <% end %>
+          <% if post.price %>
+            <div>
+              <div class="icon"><%= fa_icon 'jpy'%></div>
+              <%= post.price %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="caption">
+        <%if post.caption %>
+        <span class="user-name"><%= post.user.user_name + ' ' %></span><%= post.caption %>
+          <%if post.user == current_user %>
+            <%= link_to '<i class="fa fa-times"></i>'.html_safe, post_path(post, "post[caption]" => "" ), method: :put, class: 'link-fade delete-button' %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="comments">
+        <% if post.comments %>
+          <ul class="list-unstyled">
+          <% post.comments.each do |comment| %>
+            <li><span class="user-name"><%= comment.user.user_name + ' ' %></span><%= comment.content %>
+            <%if comment.user == current_user %>
+              <%= link_to '<i class="fa fa-times"></i>'.html_safe, post_comment_path(post, comment), method: :delete, class: 'link-fade delete-button' %>
+            <% end %></li>
+          <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <hr>
+      <div class="comment-form">
+        <div class="row center-block">
+
+          <!-- like button
+          <div class="like-button col-xs-2">
+            <%= fa_icon "heart-o" %>
+          </div>
+          -->
+
+          <%= form_for [post, post.comments.new] do |f| %>
+          <div class="comment-field col-xs-10 col-sm-11">
+            <%= f.text_field :content, placeholder: 'コメントを追加...', id: "comment_content_#{post.id}" %>
+          </div>
+
+          <div class="col-xs-1 visible-xs">
+            <button type="submit" class="btn-default like-button"><%= fa_icon "paper-plane" %></button>
+          </div>
+          <% end %>
+
+          <div class="col-xs-1 text-right">
+            <a class="link-fade" data-toggle="modal" data-target="#option-menu-<%= post.id %>"><%= fa_icon 'ellipsis-h' %></a>
+            <div class="modal fade" id="option-menu-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content text-center">
+                  <ul class="list-unstyled">
+                    <% if post.user.id == current_user.id %>
+                      <li><%= link_to "削除", post , method: :delete, class: "red" %></li>
+                      <li><%= link_to "編集する", edit_post_path(post) %></li>
+                    <% end %>
+                    <li><a data-dismiss="modal" aria-label="Close">キャンセル</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div> <!-- comment form -->
+    </div> <!-- post body -->
+  </div>
+
+<% end %>
+</div>

@@ -1,0 +1,41 @@
+<div class="wrapper">
+<%= form_for @post do |f| %>
+  <div class="frame form center-block text-center">
+    <h3 class="header">新規投稿</h3>
+
+    <div class="form-file center-block text-center">
+      <%= f.file_field :image, class: 'center-block' %>
+    </div>
+
+    <div class="form-description center-block">
+      <div>
+        <div class="icon"><%= fa_icon 'map-marker'%></div>
+        <%= f.text_field :restaurant, placeholder:'お店の名前' %>
+      </div>
+      <div>
+        <div class="icon"><%= fa_icon 'globe'%></div>
+        <%= f.text_field :location, placeholder:'場所' %>
+      </div>
+      <div>
+        <div class="icon"><%= fa_icon 'cutlery'%></div>
+        <%= f.text_field :menu, placeholder:'メニュー' %>
+      </div>
+      <div>
+        <div class="icon"><%= fa_icon 'jpy'%></div>
+        <%= f.text_field :price, placeholder:'値段' %>
+      </div>
+      <div>
+        <div class="icon"><%= fa_icon 'commenting-o'%></div>
+        <%= f.text_area :caption, placeholder: 'メッセージ' %>
+      </div>
+    </div>
+
+    <div class="form-button">
+      <%= f.submit "シェア", class: 'btn btn-color' %>
+    </div>
+
+  </div>
+<% end %>
+
+
+</div>

@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <div class="frame form center-block text-center">
+    <h3 class="header"><%= @current_user.user_name %> </h3>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="email">
+        <div class="col-sm-4 text-right text-left-xs">
+          メールアドレス
+        </div>
+        <div class="col-sm-8">
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+      </div>
+
+      <!-- <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password (leave blank if you don't want to change it)" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password (confirmation)' %>
+      </div> -->
+
+      <div class="username">
+        <div class="col-sm-4 text-right text-left-xs">
+          ユーザーネーム
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_field :user_name, require: true%>
+        </div>
+      </div>
+
+      <div class="password">
+        <div class="col-sm-4 text-right text-left-xs">
+          現在のパスワード
+        </div>
+        <div class="col-sm-8">
+          <%= f.password_field :current_password, autocomplete: "off"%>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "送信", class:'btn btn-color' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="frame form sub text-center">
+    <%= link_to "アカウントを削除する", registration_path(@user), method: :delete, data: { confirm: "アカウントを削除しますか?" }, class: "red" %>
+  </div>
+</div>
